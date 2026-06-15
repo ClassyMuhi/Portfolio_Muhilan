@@ -33,7 +33,7 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             <span className="font-jakarta font-black text-3xl tracking-[0.1em] text-white">
-              MUHILAN<span className="text-[#3B82F6]">.</span>
+              MUHILAN<span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #3B82F6, #818CF8)' }}>.</span>
             </span>
             <p className="font-inter text-white/50 text-sm leading-relaxed max-w-sm">
               Exploring artificial intelligence, research, and digital experiences through thoughtful design and engineering. Building the future, one pixel at a time.
@@ -82,7 +82,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-white/10">
+        <div className="glow-divider w-full mb-8" />
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-white/30 text-xs font-inter text-center md:text-left">
             <div className="flex items-center gap-2">
               <MapPin size={14} className="text-[#3B82F6]" />
@@ -94,10 +95,10 @@ export default function Footer() {
 
           <button 
             onClick={scrollToTop}
-            className="group flex items-center justify-center w-10 h-10 rounded-full glass border border-white/10 hover:bg-white/5 transition-colors"
+            className="group flex items-center justify-center w-10 h-10 rounded-full glass border border-white/10 hover:bg-white/5 hover:border-accent-primary/30 transition-all duration-300"
             aria-label="Scroll to top"
           >
-            <ArrowUp size={16} className="text-white/50 group-hover:text-white transition-colors" />
+            <ArrowUp size={16} className="text-white/50 group-hover:text-accent-secondary transition-colors" />
           </button>
         </div>
       </div>

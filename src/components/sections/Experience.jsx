@@ -47,10 +47,10 @@ export default function Experience() {
                 className="relative"
               >
                 {/* Dot on line */}
-                <div className="absolute -left-[2.15rem] md:-left-[3.15rem] top-1.5 w-3 h-3 rounded-full bg-accent-primary shadow-glow-primary border-2 border-base" />
+                <div className="absolute -left-[2.15rem] md:-left-[3.15rem] top-1.5 w-3.5 h-3.5 rounded-full bg-accent-primary shadow-[0_0_12px_#3B82F6,0_0_24px_rgba(59,130,246,0.4)] border-2 border-base" />
 
-                <div className="glass gradient-border rounded-2xl p-6 md:p-8 flex flex-col gap-4
-                  hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300">
+                <div className="glass gradient-border card-shine rounded-2xl p-6 md:p-8 flex flex-col gap-4
+                  hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-400">
                   <div className="flex items-center justify-between gap-3 flex-wrap">
                     <span className="font-inter text-xs font-bold tracking-[0.2em] text-accent-primary">{item.year}</span>
                   </div>

@@ -59,7 +59,7 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-base/80 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
+            ? 'backdrop-blur-2xl border-b shadow-[0_4px_30px_rgba(0,0,0,0.5),0_1px_0_rgba(59,130,246,0.1)] border-white/[0.06]'
             : 'bg-transparent'
         }`}
       >
@@ -68,10 +68,17 @@ export default function Navbar() {
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="font-jakarta font-bold text-xl tracking-[0.15em] text-white group"
+            className="font-jakarta font-black text-xl tracking-[0.18em] relative group"
+            style={{ letterSpacing: '0.18em' }}
           >
-            MUHILAN
-            <span className="text-accent-primary">.</span>
+            <span className="text-white group-hover:text-transparent group-hover:bg-clip-text transition-all duration-500"
+              style={{ WebkitBackgroundClip: 'text', backgroundImage: 'linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #818CF8 100%)' }}>
+              MUHILAN
+            </span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(135deg, #3B82F6, #818CF8)' }}
+            >.</span>
           </a>
 
           {/* Desktop Links */}
@@ -81,10 +88,10 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  className="relative font-inter text-xs font-semibold tracking-[0.15em] text-white/60 hover:text-accent-secondary transition-colors duration-300 group"
+                  className="relative font-inter text-xs font-semibold tracking-[0.15em] text-white/50 hover:text-white transition-colors duration-300 group"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent-primary transition-all duration-300 group-hover:w-full" />
+                  <span className="nav-link-underline group-hover:w-full" />
                 </a>
               </li>
             ))}
@@ -130,9 +137,10 @@ export default function Navbar() {
                 initial="hidden"
                 animate="visible"
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className="font-jakarta font-bold text-4xl tracking-wider text-white/80 hover:text-accent-secondary transition-colors duration-300"
+                className="font-jakarta font-bold text-4xl tracking-wider text-white/70 hover:text-white transition-all duration-300 relative group"
               >
                 {link.label}
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0.5 group-hover:w-full transition-all duration-300 rounded-full" style={{ background: 'linear-gradient(90deg, #3B82F6, #818CF8)', boxShadow: '0 0 10px #3B82F6' }} />
               </motion.a>
             ))}
           </motion.div>

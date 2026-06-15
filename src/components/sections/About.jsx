@@ -105,8 +105,8 @@ export default function About() {
                 transition={{ delay: 0.6, duration: 0.5 }}
                 className="pt-4"
               >
-                <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl glass border border-accent-primary/20">
-                  <div className="w-2 h-2 rounded-full bg-accent-primary animate-pulse" />
+                <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl glass border border-accent-primary/25 shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+                  <div className="w-2 h-2 rounded-full bg-accent-primary animate-pulse shadow-[0_0_8px_#3B82F6]" />
                   <span className="font-inter text-sm text-white/70">Available for internships & collaborations</span>
                 </div>
               </motion.div>
@@ -124,7 +124,7 @@ export default function About() {
                 whileInView="show"
                 viewport={{ once: true, margin: '-60px' }}
                 whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300 } }}
-                className="glass gradient-border rounded-2xl p-7 flex flex-col gap-2"
+                className="glass gradient-border card-shine rounded-2xl p-7 flex flex-col gap-2 hover:shadow-card-hover transition-all duration-500"
               >
                 <span className="font-jakarta font-black text-4xl md:text-5xl text-white">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
