@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import ThemeToggle from '../ui/ThemeToggle';
 
 const navLinks = [
   { label: 'WORK', href: '#work' },
@@ -59,7 +60,7 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'backdrop-blur-2xl border-b shadow-[0_4px_30px_rgba(0,0,0,0.5),0_1px_0_rgba(59,130,246,0.1)] border-white/[0.06]'
+            ? 'nav-scrolled backdrop-blur-2xl border-b shadow-[0_4px_30px_rgba(0,0,0,0.5),0_1px_0_rgba(59,130,246,0.1)] border-white/[0.06]'
             : 'bg-transparent'
         }`}
       >
@@ -71,8 +72,10 @@ export default function Navbar() {
             className="font-jakarta font-black text-xl tracking-[0.18em] relative group"
             style={{ letterSpacing: '0.18em' }}
           >
-            <span className="text-white group-hover:text-transparent group-hover:bg-clip-text transition-all duration-500"
-              style={{ WebkitBackgroundClip: 'text', backgroundImage: 'linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #818CF8 100%)' }}>
+            <span
+              className="nav-brand-text text-white group-hover:text-transparent group-hover:bg-clip-text transition-all duration-500"
+              style={{ WebkitBackgroundClip: 'text', backgroundImage: 'linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #818CF8 100%)' }}
+            >
               MUHILAN
             </span>
             <span
@@ -81,40 +84,49 @@ export default function Navbar() {
             >.</span>
           </a>
 
-          {/* Desktop Links */}
-          <ul className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  className="relative font-inter text-xs font-semibold tracking-[0.15em] text-white/50 hover:text-white transition-colors duration-300 group"
-                >
-                  {link.label}
-                  <span className="nav-link-underline group-hover:w-full" />
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* Desktop Right: Navigation Links + ThemeToggle */}
+          <div className="hidden md:flex items-center gap-8">
+            <ul className="flex items-center gap-9">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                    className="relative font-inter text-xs font-semibold tracking-[0.15em] text-white/50 hover:text-white transition-colors duration-300 group nav-link-text"
+                  >
+                    {link.label}
+                    <span className="nav-link-underline group-hover:w-full" />
+                  </a>
+                </li>
+              ))}
+            </ul>
 
-          {/* Mobile Hamburger */}
-          <button
-            className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {menuOpen ? (
-                <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                  <X size={22} />
-                </motion.span>
-              ) : (
-                <motion.span key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                  <Menu size={22} />
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </button>
+            <div className="pl-4 border-l border-white/10 dark:border-white/10">
+              <ThemeToggle />
+            </div>
+          </div>
+
+          {/* Mobile Right: ThemeToggle + Hamburger */}
+          <div className="flex md:hidden items-center gap-2.5">
+            <ThemeToggle />
+            <button
+              className="p-2 text-white/70 hover:text-white transition-colors"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {menuOpen ? (
+                  <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                    <X size={22} />
+                  </motion.span>
+                ) : (
+                  <motion.span key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                    <Menu size={22} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -126,7 +138,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-40 bg-base flex flex-col items-center justify-center gap-10"
+            className="fixed inset-0 z-40 bg-base mobile-menu-overlay flex flex-col items-center justify-center gap-8 px-6"
           >
             {navLinks.map((link, i) => (
               <motion.a
@@ -137,12 +149,17 @@ export default function Navbar() {
                 initial="hidden"
                 animate="visible"
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className="font-jakarta font-bold text-4xl tracking-wider text-white/70 hover:text-white transition-all duration-300 relative group"
+                className="font-jakarta font-bold text-3xl sm:text-4xl tracking-wider text-white/70 hover:text-white transition-all duration-300 relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0.5 group-hover:w-full transition-all duration-300 rounded-full" style={{ background: 'linear-gradient(90deg, #3B82F6, #818CF8)', boxShadow: '0 0 10px #3B82F6' }} />
               </motion.a>
             ))}
+
+            <div className="mt-4 pt-6 border-t border-white/10 w-48 flex items-center justify-center gap-3">
+              <span className="font-mono text-xs text-white/50 uppercase tracking-widest">Theme:</span>
+              <ThemeToggle showLabel />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

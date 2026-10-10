@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
@@ -32,8 +33,9 @@ export default function App() {
   const [activeProject, setActiveProject] = useState(null);
 
   return (
-    <div className="min-h-screen bg-base text-white overflow-x-hidden">
-      <AnimatePresence>
+    <ThemeProvider>
+      <div className="min-h-screen bg-base text-white overflow-x-hidden transition-colors duration-300">
+        <AnimatePresence>
         {activeProject === 'deepfake' && (
           <DeepfakeDetectionPage key="deepfake" onClose={() => setActiveProject(null)} />
         )}
@@ -84,5 +86,6 @@ export default function App() {
       </main>
       <Footer />
     </div>
-  );
+  </ThemeProvider>
+);
 }
