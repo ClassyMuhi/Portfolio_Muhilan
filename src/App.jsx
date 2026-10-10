@@ -73,7 +73,7 @@ export default function App() {
           <Skills />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
-          <Experience />
+          <Experience setActiveProject={setActiveProject} />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
           <MagnetLinesSection />
