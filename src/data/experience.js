@@ -191,9 +191,9 @@ export const featuredInternships = [
     role: 'Software Development Intern',
     period: 'December 2025 – January 2026',
     location: 'Chennai',
-    badge: 'Recruitment & SaaS Platform',
+    badge: 'SAP Development Platform',
     summary:
-      'Contributed to HireX, an intelligent recruitment and candidate evaluation platform designed to streamline hiring workflows, candidate screening, and recruiter dashboard interfaces.',
+      'Contributed to HireX, an intelligent SAP development and candidate evaluation platform designed to streamline hiring workflows, candidate screening, and recruiter dashboard interfaces.',
     tags: [
       'React',
       'JavaScript',
@@ -209,7 +209,7 @@ export const featuredInternships = [
     overview:
       'HireX is an intelligent recruitment and candidate evaluation platform developed to replace fragmented hiring spreadsheets with an integrated candidate screening, skill matching, and stage-tracking workflow.',
     roleContribution:
-      'Worked as a Software Development Intern on the HireX recruitment platform, translating product specifications and design system standards into modular UI components, implementing recruiter-facing layouts, and supporting front-end workflow logic.',
+      'Worked as a Software Development Intern on the HireX SAP development platform, translating product specifications and design system standards into modular UI components, implementing recruiter-facing layouts, and supporting front-end workflow logic.',
     tracks: [
       {
         id: 'recruiter-dashboard',

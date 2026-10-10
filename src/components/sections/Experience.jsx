@@ -163,7 +163,7 @@ export default function Experience({ setActiveProject }) {
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-primary" />
                         </span>
                         <span className="font-inter text-[11px] font-bold tracking-[0.2em] text-accent-primary uppercase">
-                          {isLongshore ? 'COMPLIANCE DATA INITIATIVE' : 'RECRUITMENT PLATFORM'}
+                          {isLongshore ? 'COMPLIANCE DATA INITIATIVE' : (item.badge ? item.badge.toUpperCase() : 'SAP DEVELOPMENT PLATFORM')}
                         </span>
                       </div>
 
